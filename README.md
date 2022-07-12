@@ -1,3 +1,4 @@
 # Front-End Masters
 
-A small repository for small projects completed through following various tutorials.
+TLDR.. 
+A repository for small projects completed through following various tutorials.
