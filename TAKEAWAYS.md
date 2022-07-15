@@ -1,5 +1,5 @@
 ##7/15/22
-#MEMOIZATION
+MEMOIZATION
 I can save resources/memory/speed in my current project where
 when a new tab is clicked the model returns a new array every time and builds a dom object from it.
 
@@ -12,7 +12,7 @@ I can build strings and cache them by way of closures;
 --> and I know the different ways they can by called.
 --> I can create a memoization function that closes over and caches those.
 
-#CURRYING
+CURRYING
 Currying can be used by adding() onto a function that you expect to return
 another function... basically when this function comes back call it with this()
 and when that function comes back call it with that()
