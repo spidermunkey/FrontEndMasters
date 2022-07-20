@@ -14,3 +14,7 @@ add(x, 0) == x
 
 // distributive
 add(multiply(x, y), multiply(x, z)) == multiply(x, add(y,z))
+
+// CURRY
+
+------------------
