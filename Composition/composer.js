@@ -54,12 +54,37 @@ p(4); // 7
 g(4) // 7
 */
 
+
+function compose(...fns) {
+    // console.log(fns); 
+    return function reducer(v) {
+     return fns.reduceRight(function invoke(returnValue,currentFunction){
+        //  console.log(currentFunction,returnValue)
+         return currentFunction(returnValue);
+     },v)
+    }
+}
+
+function composeTwo(fn2,fn1) {
+    return function composed(v) {
+        return fn2(fn1(v));
+    };
+}
+
 function composeThree(fn3,fn2,fn1) {
     return function composed(v){
         return fn3(fn2(fn1(v)))
     }
 }
 
+function pipe(...fns) { 
+    console.log(fns)
+    return function reducer(v) {
+         return fns.reduce(function invoke(returnValue,currentFunction){
+            return currentFunction(returnValue)
+        },v)
+    }
+}
 // function compose(...fns) {
 //     // takes in callbacks as an arg
 //     // spreads them into an array
@@ -89,24 +114,23 @@ function decrement(x) { return x - 1; }
 function double(x) { return x * 2; }
 function half(x) { return x / 2; }
 
-function compose(...fns) {
-    // console.log(fns); 
-    return function reducer(v) {
-     return fns.reduceRight(function invoke(returnValue,currentFunction){
-        //  console.log(currentFunction,returnValue)
-         return currentFunction(returnValue);
-     },v)
-    }
+/*
+    USING A FOR LOOP
+
+function compose(...fns){
+    return pipe(...fns.reverse());
 }
-function pipe(...fns) { 
-    console.log(fns)
-    return function reducer(v) {
-         return fns.reduce(function invoke(returnValue,currentFunction){
-            return currentFunction(returnValue)
-        },v)
+
+function pipe(...fns) {
+    return function piped(v){
+        for (let fn of fns) {
+            v = fn(v)
+        }
+        return v;
     }
 }
 
+*/
 var f1 = compose(increment,decrement);
 var f2 = pipe(decrement,increment);
 var f3 = compose(decrement,double,increment,half);
